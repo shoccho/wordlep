@@ -34,7 +34,7 @@ function bery_optimized_function() {
         }
     });
     let output = ""
-    if (wordList.length < 20) {
+    if (wordList.length < 30) {
         output = "Remaining words"
         wordList.forEach(el => {
             output += "\n" + el
