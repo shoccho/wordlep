@@ -22,7 +22,8 @@
         "*://www.powerlanguage.co.uk/wordle/"
       ],
       "js": [
-        "scripts/wordelp.js"
+        "scripts/wordelp.js",
+        "scripts/db.js"
       ]
     }
   ],

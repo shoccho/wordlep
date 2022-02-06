@@ -2497,5 +2497,3 @@ let wordList = ["aback",
     "youth",
     "yummy",
     "zones"];
-
-export {wordList};

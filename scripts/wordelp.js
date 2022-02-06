@@ -1,6 +1,3 @@
-
-import { wordList } from './wordList.js'
-console.log("alo")
 let board = document.querySelector('game-app').shadowRoot.querySelector('#board')
 let rows = board.childNodes
 let alreadyFiltered = []
