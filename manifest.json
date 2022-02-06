@@ -1,0 +1,35 @@
+{
+  "manifest_version": 2,
+  "name": "Wordlep",
+  "version": "1.0",
+  "description": "Helps you solve wordle",
+  "icons": {
+    "48": "icons/icon.png"
+  },
+  "permissions": [
+    "activeTab",
+    "tabs"
+  ],
+  "browser_action": {
+
+    "default_icon": "icons/icon.png",
+    "default_title": "Wordelp",
+    "default_popup": "popup/info.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://www.powerlanguage.co.uk/wordle/"
+      ],
+      "js": [
+        "scripts/wordelp.js"
+      ]
+    }
+  ],
+  "background": {
+    "persistent": false,
+    "scripts": [
+      "scripts/background.js"
+    ]
+  }
+}
