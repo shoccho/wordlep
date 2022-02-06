@@ -1,3 +1,8 @@
+chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+    if (message.command === "run") {
+        sendResponse(bery_optimized_function())
+    }
+});
 let board = document.querySelector('game-app').shadowRoot.querySelector('#board')
 let rows = board.childNodes
 let alreadyFiltered = []
@@ -16,10 +21,12 @@ function bery_optimized_function() {
 
                 } else if (eval == "present") {
                     regex = present(idx, char)
+                    wordList = wordList.filter(word => word.includes(char))
                 }
                 else if (alreadyFiltered.includes(char)) return
                 else if (eval == "absent") {
                     regex = absent(char)
+                    wordList = wordList.filter(word => !word.includes(char))
                 }
                 alreadyFiltered.push(char)
                 wordList = wordList.filter(word => word.match(regex))
@@ -30,7 +37,6 @@ function bery_optimized_function() {
     if (wordList.length < 20) {
         output = "Remaining words"
         wordList.forEach(el => {
-            console.log(el)
             output += "\n" + el
         })
     } else {
@@ -66,13 +72,3 @@ function absent(char) {
     for (let i = 0; i < 5; i++) positionsFound[i] = positionsFound[i].replace(char, '')
     return makeRegex()
 }
-function listener(message, sender, sendResponse) {
-    console.log("listen")
-    if (message.command === "run") {
-        console.log("runnnn")
-        sendResponse(bery_optimized_function())
-    }
-
-
-}
-browser.runtime.onMessage.addListener(listener);
