@@ -26,11 +26,5 @@
         "scripts/db.js"
       ]
     }
-  ],
-  "background": {
-    "persistent": false,
-    "scripts": [
-      "scripts/background.js"
-    ]
-  }
+  ]
 }

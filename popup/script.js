@@ -1,10 +1,17 @@
-browser.runtime.sendMessage(browser.runtime.id,{command: "pop"},()=>{});
+browser.tabs.query({
+    currentWindow: true,
+    active: true
+}).then(sendMessageToTabs)
 
-browser.runtime.onMessage.addListener(function(message, messageSender, sendResponse) {
-    console.log("listen in script")
-    if (message.command === "message") {
-        console.log(message.body)
-        if(message.body==undefined) document.getElementById("result").innerText="are you dumb? does this page look like wordle?"
-        else document.getElementById("result").innerText=message.body
+function sendMessageToTabs(tabs) {
+    for (let tab of tabs) {
+        browser.tabs.sendMessage(
+            tab.id,
+            { command: "run" },
+            function (response) {
+                if (response == undefined) document.getElementById("result").innerText = "Not Wordle"
+                else document.getElementById("result").innerText = response
+            }
+        )
     }
-});
+}

@@ -16,10 +16,12 @@ function bery_optimized_function() {
 
                 } else if (eval == "present") {
                     regex = present(idx, char)
+                    wordList = wordList.filter(word => word.includes(char))
                 }
                 else if (alreadyFiltered.includes(char)) return
                 else if (eval == "absent") {
                     regex = absent(char)
+                    wordList = wordList.filter(word => !word.includes(char))
                 }
                 alreadyFiltered.push(char)
                 wordList = wordList.filter(word => word.match(regex))
@@ -27,7 +29,7 @@ function bery_optimized_function() {
         }
     });
     let output = ""
-    if (wordList.length < 20) {
+    if (wordList.length < 30) {
         output = "Remaining words"
         wordList.forEach(el => {
             console.log(el)
@@ -67,9 +69,8 @@ function absent(char) {
     return makeRegex()
 }
 function listener(message, sender, sendResponse) {
-    console.log("listen")
     if (message.command === "run") {
-        console.log("runnnn")
+
         sendResponse(bery_optimized_function())
     }
 
