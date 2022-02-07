@@ -21,7 +21,6 @@ function bery_optimized_function() {
                 else if (alreadyFiltered.includes(char)) return
                 else if (eval == "absent") {
                     regex = absent(char)
-                    wordList = wordList.filter(word => !word.includes(char))
                 }
                 alreadyFiltered.push(char)
                 wordList = wordList.filter(word => word.match(regex))
