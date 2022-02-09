@@ -6,19 +6,22 @@
     <title>Wordlep info</title>
     <style>
         *{
-            scrollbar-width: none;
+            font-size: large;  
         }
-    
         body {
             width: 250px;
-            height: 400px;        
+            height: 400px;    
+            overflow: hidden;    
         }
         #popup-content{
             background-color: black;
             color: white;
             text-align: center;
+            margin: 5px;
         }
-        
+        #header{
+            padding: 5px;
+        }
     </style>
 </head>
 
@@ -26,7 +29,10 @@
     <div id="popup-content">
         A wordle helper extension
     </div>
-    <div  id="result"></div>
+    <div  id="header"></div>
+    <div id="list-div">
+        <ul id="list"></ul>
+    </div>
     <script src="./script.js"></script>
 </body>
 
