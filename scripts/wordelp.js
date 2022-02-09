@@ -35,23 +35,19 @@ function bery_optimized_function() {
             });
         }
     });
-    let output = ""
+    let output = {}
+    let header = ""
+    let list =[]
     if (wordList.length < 50) {
-        output = "Remaining words:"
-        wordList.forEach(el => {
-            console.log(el)
-            output += "\n" + el
-        })
+        header = "Remaining words:"
+        list  = wordList
     } else {
-        output += "\nTry a couple more guesses!\n words left = " + wordList.length
-        output += "\n\n Suggestions"
-
-        let temp = wordList.sort(() => .5 - Math.random()).slice(0, 30)
-        temp.forEach(el => {
-            output += "\n" + el
-        });
+        header += "Words left = " + wordList.length
+        header += "\nSuggestions"
+        list = wordList.sort(() => .5 - Math.random()).slice(0, 30)
+    
     }
-    return output
+    return {header,list}
 }
 
 function makeRegex() {

@@ -7,26 +7,40 @@
     <style>
         *{
             scrollbar-width: none;
+            text-align: left ;
         }
         body {
             width: 200px;
             height: 400px;
-            
+            padding:0dp;
+            margin: 0dp;
         }
-        #popup-content{
+        #title{
             background-color: black;
+            padding: auto;
             color: white;
-            text-align: center;
+            padding: 5px;
+            margin: 0px;
         }
-        
+        #head{
+            padding: 1px;
+            margin-top: 4dp;
+        }
+        #list{
+            padding: 1px;
+            margin: 0px;
+        }
     </style>
 </head>
 
 <body>
-    <div id="popup-content">
-        A wordle helper extension
+    <div id="title">
+        Wordle helper
     </div>
-    <div  id="result"></div>
+    <div  id="header"></div>
+    <div id="list-div">
+        <ul id="list"></ul>
+    </div>
     <script src="./script.js"></script>
 </body>
 
