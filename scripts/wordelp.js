@@ -3,22 +3,30 @@ let rows = board.childNodes
 let alreadyFiltered = []
 let leftChars = "[abcdefghijklmnopqrstuvwxyz]"
 let positionsFound = Array(5).fill(leftChars)
+let regex = null
 function bery_optimized_function() {
     rows.forEach(element => {
         if (element.getAttribute("letters").length == 5) {
+
             let tiles = element.shadowRoot.querySelectorAll("game-tile")
             tiles.forEach((tile, idx) => {
                 let char = tile.getAttribute("letter")
                 let eval = tile.getAttribute("evaluation")
-                let regex = null
+                alreadyFiltered.push(char)
                 if (eval == "correct") {
                     regex = found(idx, char)
+                    wordList = wordList.filter(word => word.match(regex))
 
                 } else if (eval == "present") {
                     regex = present(idx, char)
                     wordList = wordList.filter(word => word.includes(char))
                 }
-                else if (alreadyFiltered.includes(char)) return
+
+            });
+            tiles.forEach((tile, idx) => {
+                let char = tile.getAttribute("letter")
+                let eval = tile.getAttribute("evaluation")
+                if (alreadyFiltered.includes(char)) return
                 else if (eval == "absent") {
                     regex = absent(char)
                 }
@@ -28,20 +36,18 @@ function bery_optimized_function() {
         }
     });
     let output = ""
-    if (wordList.length < 30) {
-        output = "Remaining words"
+    if (wordList.length < 50) {
+        output = "Remaining words:"
         wordList.forEach(el => {
             console.log(el)
             output += "\n" + el
         })
     } else {
-        console.log("suggestion : ", wordList[0])
         output += "\nTry a couple more guesses!\n words left = " + wordList.length
-        output += "\n\nRandom suggestions"
+        output += "\n\n Suggestions"
 
-        let temp = wordList.sort(() => .5 - Math.random()).slice(0, 5)
+        let temp = wordList.sort(() => .5 - Math.random()).slice(0, 30)
         temp.forEach(el => {
-            console.log(el)
             output += "\n" + el
         });
     }

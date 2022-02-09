@@ -9,7 +9,7 @@ function sendMessageToTabs(tabs) {
             tab.id,
             { command: "run" },
             function (response) {
-                if (response == undefined) document.getElementById("result").innerText = "Not Wordle"
+                if (response == undefined) document.getElementById("result").innerText = "Either this is not a wordle site\n or\n Try please try reloading "
                 else document.getElementById("result").innerText = response
             }
         )
