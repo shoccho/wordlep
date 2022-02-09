@@ -12,13 +12,15 @@ function bery_optimized_function() {
             tiles.forEach((tile, idx) => {
                 let char = tile.getAttribute("letter")
                 let eval = tile.getAttribute("evaluation")
-                alreadyFiltered.push(char)
+                
                 if (eval == "correct") {
                     regex = found(idx, char)
                     wordList = wordList.filter(word => word.match(regex))
+                    alreadyFiltered.push(char)
 
                 } else if (eval == "present") {
                     regex = present(idx, char)
+                    alreadyFiltered.push(char)
                     wordList = wordList.filter(word => word.includes(char))
                 }
 
@@ -35,7 +37,6 @@ function bery_optimized_function() {
             });
         }
     });
-    let output = {}
     let header = ""
     let list =[]
     if (wordList.length < 50) {
