@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Wordlep",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Helps you solve wordle",
   "icons": {
     "48": "icons/icon.png"
@@ -18,7 +18,7 @@
   "content_scripts": [
     {
       "matches": [
-        "https://www.powerlanguage.co.uk/wordle/"
+        "https://www.nytimes.com/games/wordle/index.html"
       ],
       "js": [
       
